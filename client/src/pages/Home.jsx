@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 import heroVisual from '../assets/Hero Image.png'
 import photoroomBadge from '../assets/Photoroom.png'
-import capcutBadge from '../assets/Capcut.png'
+import capcutBadge from '../assets/CapCut.png'
 
 const navItems = [
   { label: 'Home', href: '/' },
