@@ -1,8 +1,8 @@
 import express from 'express'
-import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import Contact from './models/Contact.js'
+import { connectDB } from './utils/db.js'
 
 dotenv.config()
 
@@ -14,8 +14,7 @@ app.use(cors())
 app.use(express.json())
 
 // MongoDB Connection
-mongoose
-  .connect(process.env.MONGODB_URI)
+connectDB()
   .then(() => {
     console.log('Connected to MongoDB')
   })
@@ -75,7 +74,10 @@ app.get('/api/contacts', async (req, res) => {
   }
 })
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
+  })
+}
 
+export default app
