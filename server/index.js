@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import Contact from './models/Contact.js'
 import { connectDB } from './utils/db.js'
+import { corsOptions } from './utils/cors.js'
 
 dotenv.config()
 
@@ -10,7 +11,8 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // Middleware
-app.use(cors())
+app.use(cors(corsOptions))
+app.options('*', cors(corsOptions))
 app.use(express.json())
 
 // MongoDB Connection

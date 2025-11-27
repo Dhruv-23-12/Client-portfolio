@@ -84,3 +84,9 @@ VITE_API_URL=http://localhost:5000
 
 For production, update this to your deployed backend URL.
 
+### CORS configuration
+Set `ALLOWED_ORIGINS` in `server/.env` (comma separated) so the serverless API will accept requests from your deployed frontend:
+```
+ALLOWED_ORIGINS=https://client-portfolio-42ry.vercel.app,https://client-portfolio.vercel.app
+```
+

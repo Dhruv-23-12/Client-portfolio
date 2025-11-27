@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import Contact from '../models/Contact.js'
 import { connectDB } from '../utils/db.js'
+import { handleCors } from '../utils/cors.js'
 
 dotenv.config()
 
@@ -15,6 +16,10 @@ const validatePayload = (body) => {
 }
 
 export default async function handler(req, res) {
+  if (handleCors(req, res)) {
+    return
+  }
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST'])
     return res.status(405).json({ success: false, message: `Method ${req.method} Not Allowed` })
