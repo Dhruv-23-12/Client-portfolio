@@ -7,6 +7,7 @@
     }
   ],
   "routes": [
+    { "src": "/", "dest": "api/index.js" },
     { "src": "/api/contact", "dest": "api/contact.js" },
     { "src": "/api/contacts", "dest": "api/contacts.js" },
     { "src": "/api/health", "dest": "api/health.js" }
