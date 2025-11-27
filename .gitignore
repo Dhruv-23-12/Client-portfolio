@@ -1,0 +1,30 @@
+# Root ignores
+node_modules
+.env
+.env.*
+*.log
+dist
+.DS_Store
+PROJECT/
+client/public/PROJECT/
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Client
+client/node_modules
+client/dist
+client/.vite
+client/.env
+
+# Server
+server/node_modules
+server/.env
+server/uploads/*
+!server/uploads/.gitkeep
+
+# IDE
+.idea
+.vscode
+
