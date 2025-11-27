@@ -26,7 +26,16 @@ const Contact = () => {
     setSubmitStatus(null)
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+      const fallbackLocalApi = 'http://localhost:5000'
+      const derivedHost =
+        typeof window !== 'undefined' && !window.location.origin.includes('localhost')
+          ? window.location.origin
+          : null
+
+      const API_URL =
+        (import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL.replace(/\/$/, '')) ||
+        derivedHost ||
+        fallbackLocalApi
       const response = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: {
